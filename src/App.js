@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React from "react";
+import "./App.css";
+import Quote from "./QuoteGenerator";
+import { useColorContext } from "./ColorContext";
 
-function App() {
+const App = () => {
+  const { currentColor } = useColorContext();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className=" App" style={{ backgroundColor: currentColor }}>
+      <div className="container">
+      <div
+        id="quote-box"
+        className="position-absolute top-50 start-50 translate-middle"
+      >
+        <Quote />
+      </div>
+      </div>
+     
     </div>
   );
-}
+};
 
 export default App;

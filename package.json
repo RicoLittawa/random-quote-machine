@@ -44,6 +44,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://RicoLittawa.github.io/random-quote-machine"
-  
+  "homepage": "https://RicoLittawa.github.io/random-quote-machine",
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
+  }
 }

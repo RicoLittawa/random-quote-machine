@@ -12,7 +12,6 @@ const Quote = () => {
   const API_KEY = "SHvfyqv9qQ8UmsWdKvDn6g==Qq6nokHKFpMk8icl";
   const { currentColor, setCurrentColorIndex } = useColorContext();
   const [quoteChanged, setQuoteChanged] = useState(false);
-  const [pageLoaded, setPageLoaded] = useState(false);
   const tweetText = `"${quote}" - ${author}`;
   const tweetURL = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
     tweetText
@@ -23,16 +22,14 @@ const Quote = () => {
   }, []);
 
   useEffect(() => {
-    if (pageLoaded) {
-      const timeout = setTimeout(() => {
-        setQuoteChanged(false);
-      }, 1000);
+    const timeout = setTimeout(() => {
+      setQuoteChanged(false);
+    }, 500);
 
-      return () => {
-        clearTimeout(timeout);
-      };
-    }
-  }, [quoteChanged, setQuoteChanged, pageLoaded]);
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [quoteChanged, setQuoteChanged]);
 
   const fetchQuote = () => {
     axios
@@ -42,9 +39,8 @@ const Quote = () => {
       .then((response) => {
         const { data } = response;
         if (data && data.length > 0) {
-          setQuote(data[0].quote);
-          setAuthor(data[0].author);
-          setPageLoaded(true); // Set pageLoaded to true after fetching the initial quote
+            setQuote(data[0].quote);
+            setAuthor(data[0].author);
         } else {
           console.log("No quotes found in the response.");
         }
@@ -54,12 +50,10 @@ const Quote = () => {
       });
   };
 
-  const handleClick = () => {
+  const handleClick = () => {     
     setQuoteChanged(true);
     fetchQuote();
-    setTimeout(() => {
-      setCurrentColorIndex((prevIndex) => (prevIndex + 1) % colors.length);
-    }, 1000);
+    setCurrentColorIndex((prevIndex) => (prevIndex + 1) % colors.length);
   };
 
   return (
@@ -70,8 +64,8 @@ const Quote = () => {
             <blockquote id="text" className="mt-5">
               <p
                 style={{ color: currentColor }}
-                className={`fs-3 fs-md-6${
-                  quoteChanged || !pageLoaded ? "fade-out" : "fade-in"
+                className={`fs-3 fs-md-6 ${
+                  quoteChanged ? "fade-out" : "fade-in"
                 }`}
               >
                 <FontAwesomeIcon icon={faQuoteLeft} /> {quote}
@@ -79,7 +73,7 @@ const Quote = () => {
             </blockquote>
             <figcaption
               className={`blockquote-footer mt-2 ${
-                quoteChanged || !pageLoaded ? "fade-out" : "fade-in"
+                quoteChanged ? "fade-out" : "fade-in"
               }`}
               id="author"
               style={{ color: currentColor }}

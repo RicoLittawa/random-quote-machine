@@ -24,7 +24,7 @@ const Quote = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setQuoteChanged(false);
-    }, 500);
+    }, 1500);
 
     return () => {
       clearTimeout(timeout);
@@ -57,7 +57,7 @@ const Quote = () => {
   };
 
   return (
-    <div className="card ">
+    <div className="card">
       <div className="card-body">
         <div className="mx-3">
           <figure>

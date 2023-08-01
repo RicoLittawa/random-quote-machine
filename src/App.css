@@ -12,3 +12,23 @@
   transition: opacity 0.5s ease;
 }
 
+/* Base styles for all screen sizes */
+.card {
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+/* Media query for screens with max width of 768px */
+@media screen and (max-width: 768px) {
+  .card {
+    transform: scale(0.8); /* Scale down the card to 80% of its original size */
+    transition: transform 0.3s ease; /* Add a smooth transition effect */
+  }
+}
+
+/* Media query for screens with max width of 375px */
+@media screen and (max-width: 375px) {
+  .card {
+    transform: scale(0.6); /* Scale down the card to 60% of its original size */
+  }
+}

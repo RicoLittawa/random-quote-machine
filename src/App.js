@@ -8,13 +8,11 @@ const App = () => {
   const { currentColor } = useColorContext();
   return (
     <div className=" App" style={{ backgroundColor: currentColor }}>
-      <div className="container">
       <div
         id="quote-box"
-        className="position-absolute top-50 start-50 translate-middle"
+        className="container position-absolute top-50 start-50 translate-middle"
       >
         <Quote />
-      </div>
       </div>
      
     </div>

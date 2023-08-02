@@ -32,3 +32,9 @@
     transform: scale(0.6); /* Scale down the card to 60% of its original size */
   }
 }
+
+@media screen and (max-width: 320px) {
+  .card {
+    transform: scale(0.4); /* Scale down the card to 60% of its original size */
+  }
+}

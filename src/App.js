@@ -10,7 +10,7 @@ const App = () => {
     <div className=" App" style={{ backgroundColor: currentColor }}>
       <div
         id="quote-box"
-        className="container position-absolute top-50 start-50 translate-middle"
+        className="container container-fluid position-absolute top-50 start-50 translate-middle"
       >
         <Quote />
       </div>
